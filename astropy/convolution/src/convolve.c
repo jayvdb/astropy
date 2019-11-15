@@ -35,7 +35,7 @@
 
 // Distutils on Windows automatically exports ``PyInit__convolve``,
 // create dummy to prevent linker complaining about missing symbol.
-#if defined(_MSC_VER)
+#if defined(_MSC_VER) || defined(PYOXIDIZER)
 void PyInit__convolve(void)
 {
     return;
