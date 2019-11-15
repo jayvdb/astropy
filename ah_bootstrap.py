@@ -325,8 +325,15 @@ class _Bootstrapper(object):
             config['auto_use'] = False
             argv.remove('--use-system-astropy-helpers')
 
-        if os.getenv('USE_SYSTEM_ASTROPY_HELPERS', ''):
-            config['auto_use'] = False
+        if os.getenv('DECLARE_REQUIRES_ASTROPY_HELPERS', ''):
+            if 'egg_info' in argv:
+                config['auto_use'] = True
+                config['offline'] = False
+                config['use_git'] = True
+            else:
+                config['auto_use'] = False
+                config['offline'] = True
+                config['use_git'] = False
 
         return config
 

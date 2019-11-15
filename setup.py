@@ -31,5 +31,7 @@ else:
     # require them when installing from an sdist as the c files are included.
     if not os.path.exists(os.path.join(os.path.dirname(__file__), 'PKG-INFO')):
         setup_requires.extend(['cython>=0.29.13', 'jinja2>=2.7'])
+    if os.getenv('DECLARE_REQUIRES_ASTROPY_HELPERS', ''):
+        setup_requires.extend(['astrophy-helpers'])
 
 setup(setup_requires=setup_requires)
