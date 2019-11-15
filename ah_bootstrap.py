@@ -325,6 +325,9 @@ class _Bootstrapper(object):
             config['auto_use'] = False
             argv.remove('--use-system-astropy-helpers')
 
+        if os.getenv('USE_SYSTEM_ASTROPY_HELPERS', ''):
+            config['auto_use'] = False
+
         return config
 
     def run(self):
